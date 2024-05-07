@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_image_filters/flutter_image_filters.dart';
 import 'package:before_after_image_slider_nullsafty/before_after_image_slider_nullsafty.dart';
@@ -68,15 +70,19 @@ class _PreviewPageState extends State<PreviewPage> {
       body: Center(
         child: textureLoaded
             ? BeforeAfter(
-                thumbRadius: 0.0,
-                thumbColor: Colors.transparent,
+                thumbRadius: 16.0,
+                isVertical: false,
+                thumbColor: Colors.white,
                 beforeImage: ImageShaderPreview(
                   texture: texture,
                   configuration: NoneShaderConfiguration(),
                 ),
                 afterImage: ImageShaderPreview(
                   texture: texture,
-                  configuration: BrightnessShaderConfiguration()..brightness = 0.1,
+                  configuration: GroupShaderConfiguration()
+                    ..add(
+                      SaturationShaderConfiguration()..saturation = 0.3,
+                    ),
                 ),
               )
             : const Offstage(),
