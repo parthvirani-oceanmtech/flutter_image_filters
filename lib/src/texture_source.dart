@@ -66,8 +66,7 @@ class TextureSource {
     TileMode tmy, {
     Map<String, IfdTag>? exif,
   }) async {
-    final codec =
-        await PaintingBinding.instance.instantiateImageCodecWithSize(buffer);
+    final codec = await PaintingBinding.instance.instantiateImageCodecWithSize(buffer);
     final frameInfo = await codec.getNextFrame();
 
     return fromImage(frameInfo.image, tmx: tmx, tmy: tmy, exif: exif);

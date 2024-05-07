@@ -1,3 +1,4 @@
+import 'package:before_after_image_slider_nullsafty/before_after_image_slider_nullsafty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_filters/flutter_image_filters.dart';
 
@@ -18,9 +19,7 @@ class _PreviewPageState extends State<PreviewPage> {
     super.initState();
     configuration = BrightnessShaderConfiguration();
     configuration.brightness = 0.5;
-    TextureSource.fromAsset('demo.jpeg')
-        .then((value) => texture = value)
-        .whenComplete(
+    TextureSource.fromAsset('demo.jpeg').then((value) => texture = value).whenComplete(
           () => setState(() {
             textureLoaded = true;
           }),
@@ -30,9 +29,17 @@ class _PreviewPageState extends State<PreviewPage> {
   @override
   Widget build(BuildContext context) {
     return textureLoaded
-        ? ImageShaderPreview(
-            texture: texture,
-            configuration: configuration,
+        ? BeforeAfter(
+            thumbRadius: 0.0,
+            thumbColor: Colors.transparent,
+            beforeImage: ImageShaderPreview(
+              texture: texture,
+              configuration: NoneShaderConfiguration(),
+            ),
+            afterImage: ImageShaderPreview(
+              texture: texture,
+              configuration: configuration,
+            ),
           )
         : const Offstage();
   }

@@ -9,7 +9,7 @@ platforms:
   macos:
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: ">=3.0.6 <4.0.0"
   flutter: ">=3.7.0"
 
 dependencies:
@@ -18,6 +18,7 @@ dependencies:
     sdk: flutter
   flutter_gpu_filters_interface: ^0.0.18
   exif: ^3.3.0
+  before_after_image_slider_nullsafty: ^1.0.1
 
 dev_dependencies:
   flutter_test:
